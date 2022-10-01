@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32819.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompGraph", "CompGraph\CompGraph.csproj", "{DA700AEA-A92C-4767-976D-E504F51F00FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA700AEA-A92C-4767-976D-E504F51F00FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA700AEA-A92C-4767-976D-E504F51F00FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA700AEA-A92C-4767-976D-E504F51F00FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA700AEA-A92C-4767-976D-E504F51F00FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD6328D9-FDAD-47B6-9839-C92719947094}
+	EndGlobalSection
+EndGlobal

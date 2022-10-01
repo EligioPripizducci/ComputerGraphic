@@ -1,0 +1,17 @@
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.csproj.AssemblyReference.cache
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.Form1.resources
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.csproj.GenerateResource.cache
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.GeneratedMSBuildEditorConfig.editorconfig
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.AssemblyInfoInputs.cache
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.AssemblyInfo.cs
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.csproj.CoreCompileInputs.cache
+E:\Study\source\repos\CompGraph\CompGraph\bin\Debug\net6.0-windows\CompGraph.exe
+E:\Study\source\repos\CompGraph\CompGraph\bin\Debug\net6.0-windows\CompGraph.deps.json
+E:\Study\source\repos\CompGraph\CompGraph\bin\Debug\net6.0-windows\CompGraph.runtimeconfig.json
+E:\Study\source\repos\CompGraph\CompGraph\bin\Debug\net6.0-windows\CompGraph.dll
+E:\Study\source\repos\CompGraph\CompGraph\bin\Debug\net6.0-windows\CompGraph.pdb
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.dll
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\refint\CompGraph.dll
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.pdb
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.genruntimeconfig.cache
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\ref\CompGraph.dll
