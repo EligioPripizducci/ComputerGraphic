@@ -209,7 +209,7 @@
             this.flowLayoutPanel1.Controls.Add(this.button13);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(194, 100);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(197, 105);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // button4
@@ -327,16 +327,16 @@
             this.flowLayoutPanel2.Controls.Add(this.trackBar1);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 132);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(193, 80);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(193, 56);
             this.flowLayoutPanel2.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 32);
+            this.label1.Size = new System.Drawing.Size(184, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "Толщина";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -344,9 +344,9 @@
             // trackBar1
             // 
             this.trackBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.trackBar1.Location = new System.Drawing.Point(3, 35);
+            this.trackBar1.Location = new System.Drawing.Point(3, 24);
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(190, 45);
+            this.trackBar1.Size = new System.Drawing.Size(184, 45);
             this.trackBar1.TabIndex = 0;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
@@ -423,10 +423,10 @@
             // 
             // create_group
             // 
-            this.create_group.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.create_group.Location = new System.Drawing.Point(3, 225);
+            this.create_group.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.create_group.Location = new System.Drawing.Point(0, 194);
             this.create_group.Name = "create_group";
-            this.create_group.Size = new System.Drawing.Size(197, 40);
+            this.create_group.Size = new System.Drawing.Size(197, 24);
             this.create_group.TabIndex = 14;
             this.create_group.Text = "Создать группу";
             this.create_group.UseVisualStyleBackColor = true;
@@ -434,14 +434,14 @@
             // 
             // Check
             // 
-            this.Check.Location = new System.Drawing.Point(0, 271);
+            this.Check.Location = new System.Drawing.Point(0, 224);
             this.Check.Name = "Check";
             this.Check.Size = new System.Drawing.Size(196, 23);
             this.Check.TabIndex = 13;
             // 
             // StatusBar
             // 
-            this.StatusBar.Location = new System.Drawing.Point(0, 300);
+            this.StatusBar.Location = new System.Drawing.Point(0, 253);
             this.StatusBar.Name = "StatusBar";
             this.StatusBar.Size = new System.Drawing.Size(196, 23);
             this.StatusBar.TabIndex = 13;

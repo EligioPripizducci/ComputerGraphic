@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Numerics;
+using System.Reflection.Emit;
 using static System.Windows.Forms.LinkLabel;
+using Label = System.Windows.Forms.Label;
 //using static System.Net.Mime.MediaTypeNames;
 
 namespace CompGraph
@@ -44,6 +46,9 @@ namespace CompGraph
         List<Point> Point1Group = new List<Point>();
         List<Point> Point2Group = new List<Point>();
         Point StartDownLocation = new Point();
+
+
+        TrackBar Scale_trackBar = new TrackBar();
 
 
         public Form1()
@@ -134,6 +139,11 @@ namespace CompGraph
                     case "MoveGroup":
                         {
                             MouseMove_MoveGroup(sender, e);
+                            break;
+                        }
+                    case "ChangeGroup":
+                        {
+                            MouseMove_ChangeGroup(sender, e);
                             break;
                         }
                 }
@@ -239,10 +249,11 @@ namespace CompGraph
             {
                 ChosenGroupNumber = GetGroup();
             }
-            isGroupChosen = true;
             
+
             if (ChosenGroupNumber > -1)
             {
+                isGroupChosen = true;
                 for (int i = 0; i < MyGroups[ChosenGroupNumber].Lines.Count; i++)
                 {
                     LineList lines = new LineList();
@@ -256,6 +267,7 @@ namespace CompGraph
                     }
                     
                 }
+                isGroupChosen = false;
                 MyGroups.Add(new Group(l, MyGroups[ChosenGroupNumber].pen));
                 MyGroups.RemoveAt(ChosenGroupNumber);
                 l.Clear();
@@ -263,7 +275,38 @@ namespace CompGraph
                 StartDownLocation.Y = e.Y;
             }
         }
+        private void MouseMove_ChangeGroup(object sender, MouseEventArgs e)
+        {
+            if (!isGroupChosen)
+            {
+                ChosenGroupNumber = GetGroup();
+            }
 
+
+            if (ChosenGroupNumber > -1)
+            {
+                isGroupChosen = true;
+                for (int i = 0; i < MyGroups[ChosenGroupNumber].Lines.Count; i++)
+                {
+                    LineList lines = new LineList();
+                    if (ChosenGroupNumber >= 0 && MyGroups.Count > 0)
+                    {
+                        lines.X1 = e.X + MyGroups[ChosenGroupNumber].Lines[i].X1 - StartDownLocation.X;
+                        lines.Y1 = e.Y + MyGroups[ChosenGroupNumber].Lines[i].Y1 - StartDownLocation.Y;
+                        lines.X2 = e.X + MyGroups[ChosenGroupNumber].Lines[i].X2 - StartDownLocation.X;
+                        lines.Y2 = e.Y + MyGroups[ChosenGroupNumber].Lines[i].Y2 - StartDownLocation.Y;
+                        l.Add(lines);
+                    }
+
+                }
+                isGroupChosen = false;
+                MyGroups.Add(new Group(l, MyGroups[ChosenGroupNumber].pen));
+                MyGroups.RemoveAt(ChosenGroupNumber);
+                l.Clear();
+                StartDownLocation.X = e.X;
+                StartDownLocation.Y = e.Y;
+            }
+        }
 
 
         //Действия при отпускании ЛКМ для разных режимов работы
@@ -399,15 +442,14 @@ namespace CompGraph
         }
         private void MouseUp_MoveGroup(object sender, MouseEventArgs e)
         {
-            
-           
             if (ChosenGroupNumber >= 0)
             {
+                l.Clear();
             }
-            else
+            /*else
             {
                 MyGroups.RemoveAt(MyGroups.Count - 1);
-            }
+            }*/
             isGroupChosen = false;
         }
 
@@ -460,9 +502,6 @@ namespace CompGraph
         private void Paint_Lines(object sender, PaintEventArgs e)
         {
             Random random = new Random();
-
-
-
             Pen dot_Color2 = new Pen(Color.Green, 3);
             Pen dot_Color = new Pen(Color.Blue, 3);
             Pen group_pen = new Pen(Color.Purple, 3);
@@ -572,6 +611,7 @@ namespace CompGraph
                     if (IsPointOnLine(CursorX, CursorY, x1,x2, y1, y2))
                     {
                         Check.Text = i.ToString();
+                        //MyGroups[i].pen.Color = Color.Red;
                         return i;
                     }         
                 }
@@ -795,8 +835,76 @@ namespace CompGraph
             if (LineMode_RB.Checked)
             {
                 DrawCase = "ChangeGroup";
+
+                create_group.Visible = false;
+                Check.Visible = false;
+                StatusBar.Visible = false;
+                flowLayoutPanel2.Visible = false;
+
+                FlowLayoutPanel Scale = new FlowLayoutPanel();
+                Scale.Visible = true;
+                Scale.Height = 150;
+                panel1.Controls.Add(Scale);
+                
+                Scale_trackBar.Size = trackBar1.Size;
+                Scale_trackBar.Minimum = 5;
+                Scale_trackBar.Maximum = 20;
+                Scale_trackBar.Value = 13;
+                Scale_trackBar.TickFrequency = 1;
+                //Scale_trackBar.ValueChanged += Scale_Bar_ValueChanged;
+                Scale_trackBar.MouseUp += Scale_trackBar_MouseUp;
+
+                Label label = new Label();
+                label.Text = "Масштабирование";
+                label.Width = label1.Width;
+                label.Font = new Font("Segoe UI Symbol", 12);
+                label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+                label.TextAlign = ContentAlignment.MiddleCenter;
+
+
+                TrackBar Rotate_trackBar = new TrackBar();
+                Rotate_trackBar.Size = trackBar1.Size;
+                Rotate_trackBar.Minimum = 0;
+                Rotate_trackBar.Maximum = 36;
+                Rotate_trackBar.Value = 18;
+                Rotate_trackBar.TickFrequency = 1;
+
+                Label rotate_label = new Label();
+                rotate_label.Text = "Поворот";
+                rotate_label.Width = label1.Width;
+                rotate_label.Font = new Font("Segoe UI Symbol", 12);
+                rotate_label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+                rotate_label.TextAlign = ContentAlignment.MiddleCenter;
+
+
+                //Scale_trackBar.Parent = Scale;
+                Scale.Controls.Add(label);
+                Scale.Controls.Add(Scale_trackBar);
+
+                Scale.Controls.Add(rotate_label);
+                Scale.Controls.Add(Rotate_trackBar);
+
+                Scale.Location = flowLayoutPanel2.Location;
             }
         }
+
+        private void Scale_trackBar_MouseUp(object? sender, MouseEventArgs e)
+        {
+            if (ChosenGroupNumber > -1)
+            {
+                for (int i = 0; i < MyGroups[ChosenGroupNumber].Lines.Count; i++)
+                {
+                    double value = Scale_trackBar.Value / 10.0;
+                    MyGroups[ChosenGroupNumber].Lines[i].X1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X1 * value);
+                    MyGroups[ChosenGroupNumber].Lines[i].X2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X2 * value);
+                    MyGroups[ChosenGroupNumber].Lines[i].Y1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y1 * value);
+                    MyGroups[ChosenGroupNumber].Lines[i].Y2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y2 * value);
+                }
+
+                Scale_trackBar.Value = 13;
+            }
+        }
+
         private void moveGroupToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (LineMode_RB.Checked)
