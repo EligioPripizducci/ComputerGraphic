@@ -176,7 +176,7 @@
             this.button2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.Location = new System.Drawing.Point(0, 567);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 46);
+            this.button2.Size = new System.Drawing.Size(251, 46);
             this.button2.TabIndex = 2;
             this.button2.Text = "Save";
             this.button2.UseVisualStyleBackColor = true;
@@ -188,7 +188,7 @@
             this.ClearButton.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ClearButton.Location = new System.Drawing.Point(0, 521);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(200, 46);
+            this.ClearButton.Size = new System.Drawing.Size(251, 46);
             this.ClearButton.TabIndex = 3;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
@@ -207,9 +207,9 @@
             this.flowLayoutPanel1.Controls.Add(this.button11);
             this.flowLayoutPanel1.Controls.Add(this.button12);
             this.flowLayoutPanel1.Controls.Add(this.button13);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 12);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(9, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(197, 105);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(230, 87);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // button4
@@ -260,7 +260,7 @@
             // 
             this.button8.BackColor = System.Drawing.Color.Blue;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(3, 41);
+            this.button8.Location = new System.Drawing.Point(193, 3);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(32, 32);
             this.button8.TabIndex = 6;
@@ -271,7 +271,7 @@
             // 
             this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(41, 41);
+            this.button9.Location = new System.Drawing.Point(3, 41);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(32, 32);
             this.button9.TabIndex = 7;
@@ -282,7 +282,7 @@
             // 
             this.button10.BackColor = System.Drawing.Color.Fuchsia;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Location = new System.Drawing.Point(79, 41);
+            this.button10.Location = new System.Drawing.Point(41, 41);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(32, 32);
             this.button10.TabIndex = 8;
@@ -293,7 +293,7 @@
             // 
             this.button11.BackColor = System.Drawing.Color.Cyan;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Location = new System.Drawing.Point(117, 41);
+            this.button11.Location = new System.Drawing.Point(79, 41);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(32, 32);
             this.button11.TabIndex = 9;
@@ -304,7 +304,7 @@
             // 
             this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button12.Location = new System.Drawing.Point(155, 41);
+            this.button12.Location = new System.Drawing.Point(117, 41);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(32, 32);
             this.button12.TabIndex = 10;
@@ -313,9 +313,9 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(3, 79);
+            this.button13.Location = new System.Drawing.Point(155, 41);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(191, 23);
+            this.button13.Size = new System.Drawing.Size(70, 32);
             this.button13.TabIndex = 11;
             this.button13.Text = "New color";
             this.button13.UseVisualStyleBackColor = true;
@@ -325,9 +325,9 @@
             // 
             this.flowLayoutPanel2.Controls.Add(this.label1);
             this.flowLayoutPanel2.Controls.Add(this.trackBar1);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 132);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(9, 105);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(193, 56);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(233, 78);
             this.flowLayoutPanel2.TabIndex = 5;
             // 
             // label1
@@ -336,7 +336,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 21);
+            this.label1.Size = new System.Drawing.Size(225, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "Толщина";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -346,7 +346,7 @@
             this.trackBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.trackBar1.Location = new System.Drawing.Point(3, 24);
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(184, 45);
+            this.trackBar1.Size = new System.Drawing.Size(225, 45);
             this.trackBar1.TabIndex = 0;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
@@ -380,26 +380,28 @@
             this.CursorX_tb.Location = new System.Drawing.Point(3, 26);
             this.CursorX_tb.Name = "CursorX_tb";
             this.CursorX_tb.ReadOnly = true;
-            this.CursorX_tb.Size = new System.Drawing.Size(95, 23);
+            this.CursorX_tb.Size = new System.Drawing.Size(125, 23);
             this.CursorX_tb.TabIndex = 8;
             this.CursorX_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CursorY_tb
             // 
             this.CursorY_tb.Dock = System.Windows.Forms.DockStyle.Right;
-            this.CursorY_tb.Location = new System.Drawing.Point(104, 26);
+            this.CursorY_tb.Location = new System.Drawing.Point(134, 26);
             this.CursorY_tb.Name = "CursorY_tb";
             this.CursorY_tb.ReadOnly = true;
-            this.CursorY_tb.Size = new System.Drawing.Size(93, 23);
+            this.CursorY_tb.Size = new System.Drawing.Size(114, 23);
             this.CursorY_tb.TabIndex = 9;
             this.CursorY_tb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 23);
+            this.label2.Size = new System.Drawing.Size(245, 23);
             this.label2.TabIndex = 10;
             this.label2.Text = "Координаты мыши";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -416,17 +418,17 @@
             this.panel1.Controls.Add(this.ClearButton);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(719, 0);
+            this.panel1.Location = new System.Drawing.Point(668, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 613);
+            this.panel1.Size = new System.Drawing.Size(251, 613);
             this.panel1.TabIndex = 11;
             // 
             // create_group
             // 
-            this.create_group.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.create_group.Location = new System.Drawing.Point(0, 194);
+            this.create_group.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.create_group.Location = new System.Drawing.Point(6, 189);
             this.create_group.Name = "create_group";
-            this.create_group.Size = new System.Drawing.Size(197, 24);
+            this.create_group.Size = new System.Drawing.Size(242, 35);
             this.create_group.TabIndex = 14;
             this.create_group.Text = "Создать группу";
             this.create_group.UseVisualStyleBackColor = true;
@@ -434,16 +436,16 @@
             // 
             // Check
             // 
-            this.Check.Location = new System.Drawing.Point(0, 224);
+            this.Check.Location = new System.Drawing.Point(6, 230);
             this.Check.Name = "Check";
-            this.Check.Size = new System.Drawing.Size(196, 23);
+            this.Check.Size = new System.Drawing.Size(242, 23);
             this.Check.TabIndex = 13;
             // 
             // StatusBar
             // 
-            this.StatusBar.Location = new System.Drawing.Point(0, 253);
+            this.StatusBar.Location = new System.Drawing.Point(6, 259);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(196, 23);
+            this.StatusBar.Size = new System.Drawing.Size(242, 23);
             this.StatusBar.TabIndex = 13;
             // 
             // flowLayoutPanel4
@@ -453,7 +455,7 @@
             this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel4.Location = new System.Drawing.Point(0, 391);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(200, 70);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(251, 70);
             this.flowLayoutPanel4.TabIndex = 12;
             // 
             // flowLayoutPanel3
@@ -464,7 +466,7 @@
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 461);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(200, 60);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(251, 60);
             this.flowLayoutPanel3.TabIndex = 11;
             // 
             // Form1

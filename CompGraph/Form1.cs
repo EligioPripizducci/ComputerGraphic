@@ -49,6 +49,17 @@ namespace CompGraph
 
 
         TrackBar Scale_trackBar = new TrackBar();
+        NumericUpDown value_number = new NumericUpDown();
+        Button scale_picture = new Button();
+        NumericUpDown value_angle = new NumericUpDown();
+        Button rotate_picture = new Button();
+        Button mirror_picture = new Button();
+        CheckBox Y_mirror = new CheckBox();
+        CheckBox X_mirror = new CheckBox();
+        CheckBox test = new CheckBox();
+        NumericUpDown p_koef = new NumericUpDown();
+        NumericUpDown q_koef = new NumericUpDown();
+        Button project_picture = new Button();
 
 
         public Form1()
@@ -738,6 +749,89 @@ namespace CompGraph
                 MyLines.Remove(MyLines[i]);
             }
         }
+        private Point GetPointofGroup(Group gr)
+        {
+            Point point;
+            int min_X1 = 10000, min_Y1 = 10000;
+            int tmp_X, tmp_Y;
+            foreach (var item in gr.Lines)
+            {
+                var FirstLong = Math.Sqrt(Math.Pow((item.X1 - 0), 2) + Math.Pow((item.Y1 - 0), 2));
+                var SecondLong = Math.Sqrt(Math.Pow((item.X2 - 0), 2) + Math.Pow((item.Y2 - 0), 2));
+
+                if (FirstLong < SecondLong)
+                {
+                    tmp_X = item.X1;
+                    tmp_Y = item.Y1;
+                }
+                else
+                {
+                    tmp_X = item.X2;
+                    tmp_Y = item.Y2;
+                }
+                FirstLong = Math.Sqrt(Math.Pow((min_X1 - 0), 2) + Math.Pow((min_Y1 - 0), 2));
+                SecondLong = Math.Sqrt(Math.Pow((tmp_X - 0), 2) + Math.Pow((tmp_Y - 0), 2));
+                if (FirstLong > SecondLong)
+                {
+                    min_X1 = tmp_X;
+                    min_Y1 = tmp_Y;
+                }
+            }
+            point = new Point(min_X1, min_Y1);
+            return point;
+        }
+        private Point GetNewXY(Group gr)
+        {
+            Point point;
+            int min_X1 = 10000, max_Y1 = -1;
+            int tmp_X, tmp_Y;
+            foreach (var item in gr.Lines)
+            {
+                if (item.Y1 > item.Y2)
+                {
+                    tmp_Y = item.Y1;
+                }
+                else
+                {
+                    tmp_Y = item.Y2;
+                }
+                if (tmp_Y > max_Y1)
+                {
+                    max_Y1 = tmp_Y;
+                }
+            }
+            foreach (var item in gr.Lines)
+            {
+                if (item.X1 < item.X2)
+                {
+                    tmp_X = item.X1;
+                }
+                else
+                {
+                    tmp_X = item.X2;
+                }
+                if (tmp_X < min_X1)
+                {
+                    min_X1 = tmp_X;
+                }
+            }
+            point = new Point(min_X1, max_Y1);
+            return point;
+        }
+        private double GetSin(double angle)
+        {
+            double radian = angle * Math.PI / 180;
+            double result = Math.Sin(radian);
+            Math.Round(result, 2);
+            return result;
+        }
+        private double GetCos(double angle)
+        {
+            double radian = angle * Math.PI / 180;
+            double result = Math.Cos(radian);
+            Math.Round(result, 2);
+            return result;
+        }
 
 
 
@@ -842,17 +936,25 @@ namespace CompGraph
                 flowLayoutPanel2.Visible = false;
 
                 FlowLayoutPanel Scale = new FlowLayoutPanel();
+                FlowLayoutPanel mirror_panel = new FlowLayoutPanel();
+                Scale.Width = 240;
+                mirror_panel.Width = 240;
+                mirror_panel.Height = 80;
+                Scale.Location = flowLayoutPanel2.Location;
                 Scale.Visible = true;
-                Scale.Height = 150;
+                Scale.Height = 300;
                 panel1.Controls.Add(Scale);
                 
-                Scale_trackBar.Size = trackBar1.Size;
-                Scale_trackBar.Minimum = 5;
-                Scale_trackBar.Maximum = 20;
-                Scale_trackBar.Value = 13;
-                Scale_trackBar.TickFrequency = 1;
-                //Scale_trackBar.ValueChanged += Scale_Bar_ValueChanged;
-                Scale_trackBar.MouseUp += Scale_trackBar_MouseUp;
+                //Масштабирование изображения
+                value_number.Width = 65;
+                value_number.DecimalPlaces = 1;
+                value_number.Maximum = 2;
+                value_number.Minimum = 0.5M;
+                value_number.Increment = 0.1M;
+
+                scale_picture.Text = "Изменить";
+                scale_picture.Width = 150;
+                scale_picture.Click += Scale_picture_Click;
 
                 Label label = new Label();
                 label.Text = "Масштабирование";
@@ -861,14 +963,11 @@ namespace CompGraph
                 label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 label.TextAlign = ContentAlignment.MiddleCenter;
 
+                Scale.Controls.Add(label);
+                Scale.Controls.Add(value_number);
+                Scale.Controls.Add(scale_picture);
 
-                TrackBar Rotate_trackBar = new TrackBar();
-                Rotate_trackBar.Size = trackBar1.Size;
-                Rotate_trackBar.Minimum = 0;
-                Rotate_trackBar.Maximum = 36;
-                Rotate_trackBar.Value = 18;
-                Rotate_trackBar.TickFrequency = 1;
-
+                //Поворот изображения
                 Label rotate_label = new Label();
                 rotate_label.Text = "Поворот";
                 rotate_label.Width = label1.Width;
@@ -876,34 +975,191 @@ namespace CompGraph
                 rotate_label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 rotate_label.TextAlign = ContentAlignment.MiddleCenter;
 
+                value_angle.Width = 65;
+                value_angle.DecimalPlaces = 0;
+                value_angle.Maximum = 360;
+                value_angle.Minimum = -360;
+                value_angle.Increment = 5;
 
-                //Scale_trackBar.Parent = Scale;
-                Scale.Controls.Add(label);
-                Scale.Controls.Add(Scale_trackBar);
+                rotate_picture.Width = 150;
+                rotate_picture.Text = "Повернуть";
+                rotate_picture.Click += Rotate_picture_Click;
 
                 Scale.Controls.Add(rotate_label);
-                Scale.Controls.Add(Rotate_trackBar);
+                Scale.Controls.Add(value_angle);
+                Scale.Controls.Add(rotate_picture);
 
-                Scale.Location = flowLayoutPanel2.Location;
+                //Зеркалирование изображения
+                mirror_picture.Width = 210;
+                
+                mirror_picture.Text = "Отразить";
+                mirror_picture.Click += Mirror_picture_Click;
+                X_mirror.Width = 110;
+                Y_mirror.Width = 110;
+                
+                X_mirror.Text = "Отразить по Х";
+                Y_mirror.Text = "Отразить по Y";
+                
+                mirror_panel.Controls.Add(Y_mirror);
+                mirror_panel.Controls.Add(X_mirror);
+                mirror_panel.Controls.Add(mirror_picture);
+                Scale.Controls.Add(mirror_panel);
+
+                //Проецирование изображения
+                Label q_lab = new Label();
+                Label p_lab = new Label();
+                q_lab.Font = new Font("Segoe UI Symbol", 12);
+                p_lab.Font = new Font("Segoe UI Symbol", 12);
+                q_lab.Text = "Коэф. Q";
+                p_lab.Text = "Коэф. P";
+                project_picture.Width = 210;
+                project_picture.Text = "Проецировать";
+                project_picture.Click += Project_picture_Click1;
+                p_koef.DecimalPlaces = 1;
+                p_koef.Maximum = 2;
+                p_koef.Minimum = 0.1M;
+                p_koef.Increment = 0.1M;
+                q_koef.DecimalPlaces = 1;
+                q_koef.Maximum = 2;
+                q_koef.Minimum = 0.1M;
+                q_koef.Increment = 0.1M;
+                Scale.Controls.Add(p_koef);
+                Scale.Controls.Add(p_lab);
+                Scale.Controls.Add(q_koef);
+                Scale.Controls.Add(q_lab);
+                Scale.Controls.Add(project_picture);
             }
         }
-
-        private void Scale_trackBar_MouseUp(object? sender, MouseEventArgs e)
+        private void Project_picture_Click1(object? sender, EventArgs e)
         {
             if (ChosenGroupNumber > -1)
             {
+                Point min = GetPointofGroup(MyGroups[ChosenGroupNumber]);
+
                 for (int i = 0; i < MyGroups[ChosenGroupNumber].Lines.Count; i++)
                 {
-                    double value = Scale_trackBar.Value / 10.0;
-                    MyGroups[ChosenGroupNumber].Lines[i].X1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X1 * value);
-                    MyGroups[ChosenGroupNumber].Lines[i].X2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X2 * value);
-                    MyGroups[ChosenGroupNumber].Lines[i].Y1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y1 * value);
-                    MyGroups[ChosenGroupNumber].Lines[i].Y2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y2 * value);
-                }
+                    var tmp_x1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X1);
+                    var tmp_y1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y1);
+                    var tmp_x2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X2);
+                    var tmp_y2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y2);
 
-                Scale_trackBar.Value = 13;
+                    double value1 = (double)1.0 / (tmp_x1 * (double)p_koef.Value + tmp_y1 * (double)q_koef.Value);
+                    double value2 = (double)1.0 / (tmp_x2 * (double)p_koef.Value + tmp_y2 * (double)q_koef.Value);
+
+                    MyGroups[ChosenGroupNumber].Lines[i].X1 = (int)(tmp_x1 * value1) + (int)(min.X - min.X * value1);
+                    MyGroups[ChosenGroupNumber].Lines[i].X2 = (int)(tmp_x2 * value2) + (int)(min.X - min.X * value2);
+                    MyGroups[ChosenGroupNumber].Lines[i].Y1 = (int)(tmp_y1 * value1) + (int)(min.Y - min.Y * value1);
+                    MyGroups[ChosenGroupNumber].Lines[i].Y2 = (int)(tmp_y2 * value2) + (int)(min.Y - min.Y * value2);
+
+                }
             }
         }
+        private void Mirror_picture_Click(object? sender, EventArgs e)
+        {            
+            Point newXY = GetNewXY(MyGroups[ChosenGroupNumber]);
+            int eps = 5;
+            int newX = (int)newXY.X - eps;
+            int newY = (int)newXY.Y + eps;
+            if (ChosenGroupNumber > -1)
+            {
+
+                if (Y_mirror.Checked && X_mirror.Checked)
+                {
+                    for (int i = 0; i < MyGroups[ChosenGroupNumber].Lines.Count; i++)
+                    {
+                        var tmp_x1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X1) - newX;
+                        var tmp_y1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y1) - newY;
+                        var tmp_x2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X2) - newX;
+                        var tmp_y2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y2) - newY;
+
+                        MyGroups[ChosenGroupNumber].Lines[i].X1 = newX - tmp_x1;
+                        MyGroups[ChosenGroupNumber].Lines[i].Y1 = newY - tmp_y1;
+                        MyGroups[ChosenGroupNumber].Lines[i].X2 = newX - tmp_x2;
+                        MyGroups[ChosenGroupNumber].Lines[i].Y2 = newY - tmp_y2;
+                    }
+                }
+                else if (Y_mirror.Checked)
+                {
+                    for (int i = 0; i < MyGroups[ChosenGroupNumber].Lines.Count; i++)
+                    {
+                        var tmp_y1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y1) - newY;
+                        var tmp_y2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y2) - newY;
+
+                        MyGroups[ChosenGroupNumber].Lines[i].Y1 = newY - tmp_y1;
+                        MyGroups[ChosenGroupNumber].Lines[i].Y2 = newY - tmp_y2;
+                    }
+                }
+                else if (X_mirror.Checked)
+                {
+                    for (int i = 0; i < MyGroups[ChosenGroupNumber].Lines.Count; i++)
+                    {
+                        var tmp_x1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X1) - newX;
+                        var tmp_x2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X2) - newX;
+
+                        MyGroups[ChosenGroupNumber].Lines[i].X1 = newX - tmp_x1;
+                        MyGroups[ChosenGroupNumber].Lines[i].X2 = newX - tmp_x2;
+                    }
+                }
+                for (int i = 0; i < MyGroups[ChosenGroupNumber].Lines.Count; i++)
+                {
+                    var tmp_x1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X1);
+                    var tmp_y1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y1);
+                    var tmp_x2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X2);
+                    var tmp_y2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y2);
+                }
+            }
+        }
+        private void Rotate_picture_Click(object? sender, EventArgs e)
+        {
+            if (ChosenGroupNumber > -1)
+            {
+                double value = (double)value_angle.Value;
+                Point min = GetPointofGroup(MyGroups[ChosenGroupNumber]);
+                var newX_tmp = (int)(min.X * GetCos(value) - min.Y * GetSin(value));
+                var newY_tmp = (int)(min.X * GetSin(value) + min.Y * GetCos(value));
+
+                var tmpX = min.X - newX_tmp;
+                var tmpY = min.Y - newY_tmp;
+
+                for (int i = 0; i < MyGroups[ChosenGroupNumber].Lines.Count; i++)
+                {
+                    var tmp_x1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X1);
+                    var tmp_y1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y1);
+                    var tmp_x2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X2);
+                    var tmp_y2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y2);
+
+                    MyGroups[ChosenGroupNumber].Lines[i].X1 = (int)(tmp_x1 * GetCos(value) - tmp_y1 * GetSin(value)) + tmpX;
+                    MyGroups[ChosenGroupNumber].Lines[i].Y1 = (int)(tmp_x1 * GetSin(value) + tmp_y1 * GetCos(value)) + tmpY;
+
+                    MyGroups[ChosenGroupNumber].Lines[i].X2 = (int)(tmp_x2 * GetCos(value) - tmp_y2 * GetSin(value)) + tmpX;
+                    MyGroups[ChosenGroupNumber].Lines[i].Y2 = (int)(tmp_x2 * GetSin(value) + tmp_y2 * GetCos(value)) + tmpY;
+                }
+            }
+        }
+        private void Scale_picture_Click(object? sender, EventArgs e)
+        {
+            if (ChosenGroupNumber > -1)
+            {
+                Point min = GetPointofGroup(MyGroups[ChosenGroupNumber]);
+
+                for (int i = 0; i < MyGroups[ChosenGroupNumber].Lines.Count; i++)
+                {
+                    double value = (double)value_number.Value;
+
+                    var tmp_x1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X1);
+                    var tmp_y1 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y1);
+                    var tmp_x2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].X2);
+                    var tmp_y2 = (int)(MyGroups[ChosenGroupNumber].Lines[i].Y2);
+
+                    MyGroups[ChosenGroupNumber].Lines[i].X1 = (int)(tmp_x1 * value) + (int)(min.X - min.X * value);
+                    MyGroups[ChosenGroupNumber].Lines[i].X2 = (int)(tmp_x2 * value) + (int)(min.X - min.X * value);
+                    MyGroups[ChosenGroupNumber].Lines[i].Y1 = (int)(tmp_y1 * value) + (int)(min.Y - min.Y * value);
+                    MyGroups[ChosenGroupNumber].Lines[i].Y2 = (int)(tmp_y2 * value) + (int)(min.Y - min.Y * value); 
+                    
+                }
+            }
+        }
+
 
         private void moveGroupToolStripMenuItem_Click(object sender, EventArgs e)
         {
