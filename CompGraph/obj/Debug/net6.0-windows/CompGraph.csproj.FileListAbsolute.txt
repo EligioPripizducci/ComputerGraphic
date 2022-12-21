@@ -15,3 +15,6 @@ E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\refint\CompGr
 E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.pdb
 E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.genruntimeconfig.cache
 E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\ref\CompGraph.dll
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.Trimetria.resources
+E:\Study\source\repos\CompGraph\CompGraph\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+E:\Study\source\repos\CompGraph\CompGraph\obj\Debug\net6.0-windows\CompGraph.csproj.CopyComplete

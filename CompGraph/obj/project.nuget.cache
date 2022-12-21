@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "hxcq6IRIxDzdKd4j/4IRAf6sdYG4Ur3OUtl97vvN5Mw1tzX4zJfHpZbbgJMy3m7T4nRzOkGb7E4OwUU497I9qw==",
+  "dgSpecHash": "E32Jpc+SZjj56bSbI2Y9IbiuNAR+QAtmshscLiU2crvEC0wSbSz6OzozJIEVNO+GdDDJNQLXPYU5QquerB1YSw==",
   "success": true,
   "projectFilePath": "E:\\Study\\source\\repos\\CompGraph\\CompGraph\\CompGraph.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\galileg\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

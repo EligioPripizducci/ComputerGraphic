@@ -9,17 +9,17 @@ namespace CompGraph
     internal class Group
     {
         public List<LineList> Lines = new List<LineList>();
-        public Pen pen = new Pen(Color.Black, 3f);
+        //public Pen pen = new Pen(Color.Black, 3f);
 
-        public Group(List<LineList>lines, Pen pen)
+        public Group(List<LineList>lines)
         {
             Lines = new List<LineList>(lines);
-            this.pen = pen;
+            //this.pen = pen;
         }
 
         public Group(Pen pen)
         {
-            this.pen = pen;
+            //this.pen = pen;
         }
 
         public Group()
